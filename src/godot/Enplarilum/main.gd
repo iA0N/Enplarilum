@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var sunPosition = $sun.position
 var tracked_planet = {"tracking": false, "planet": null}
-var enemy_scene = load("res://enemy.tscn")
+var enemy_scene = load("res://scenes/enemy.tscn")
 var default_cam_position = Vector3(0, 112, 0)
 
 # Called when the node enters the scene tree for the first time.

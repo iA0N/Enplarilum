@@ -1,12 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://btfw7b8c688rt"]
+[gd_scene load_steps=6 format=3 uid="uid://btfw7b8c688rt"]
 
-[ext_resource type="Material" uid="uid://dj0rjh8ry13js" path="res://p1_mat.tres" id="1_yavx4"]
-[ext_resource type="Script" path="res://planet.gd" id="2_scg1l"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_h5vhh"]
-material = ExtResource("1_yavx4")
-radius = 3.0
-height = 6.0
+[ext_resource type="Script" path="res://scenes/planet.gd" id="1_u6rp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kpout"]
 size = Vector3(7.73219, 7.30524, 7.29469)
@@ -22,9 +16,8 @@ grow_amount = 3.765
 [sub_resource type="PointMesh" id="PointMesh_0v75e"]
 material = SubResource("StandardMaterial3D_jnu6g")
 
-[node name="planet" type="MeshInstance3D"]
-mesh = SubResource("SphereMesh_h5vhh")
-script = ExtResource("2_scg1l")
+[node name="planet" type="Node3D"]
+script = ExtResource("1_u6rp7")
 
 [node name="Area3D" type="Area3D" parent="."]
 

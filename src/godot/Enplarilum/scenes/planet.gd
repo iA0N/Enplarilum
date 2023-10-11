@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var direction = Vector3(0, 0, -30)
 @export var speed = 2
