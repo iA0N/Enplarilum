@@ -1,0 +1,19 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://euycf5nnkpsc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ekmj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3nk5i"]
+panorama = SubResource("CompressedTexture2D_1ekmj")
+
+[sub_resource type="Sky" id="Sky_yoh4g"]
+sky_material = SubResource("PanoramaSkyMaterial_3nk5i")
+
+[resource]
+background_mode = 1
+sky = SubResource("Sky_yoh4g")
+sky_custom_fov = 140.0
+ambient_light_source = 2
+ambient_light_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+glow_strength = 2.0
+glow_bloom = 1.0
+volumetric_fog_density = 0.0
