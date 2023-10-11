@@ -2,12 +2,16 @@ extends Node3D
 
 @onready var sunPosition = $sun.position
 var tracked_planet = {"tracking": false, "planet": null}
-var enemy_scene = load("res://scenes/enemy.tscn")
 var default_cam_position = Vector3(0, 112, 0)
+var planets = []
+
+# load scenes
+var enemy_scene = load("res://scenes/enemy.tscn")
+var planet_scene = load("res://scenes/planet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("p1").clicked.connect(clicked_planet)
+	spawn_planet(Vector3(-100, 0, 0), Vector3(0, 0, 80), 0.25)
 	spawn_enemies()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +36,21 @@ func _input(event):
 	if event is InputEventScreenPinch:
 		$Camera3D.position.y -= sign(event.relative)
 		
+	if (event is InputEventMultiScreenDrag or
+		event is InputEventMultiScreenSwipe or
+		event is InputEventMultiScreenTap or
+		event is InputEventMultiScreenLongPress or
+		event is InputEventSingleScreenDrag or
+		event is InputEventScreenPinch or
+		event is InputEventScreenTwist or
+		event is InputEventSingleScreenTap or
+		event is InputEventSingleScreenLongPress or
+		event is InputEventSingleScreenTouch or
+		event is InputEventSingleScreenSwipe or
+		event is InputEventScreenCancel):
+			$UI/user_input.text = event.as_string()
+			print(event.as_string())
+
 
 func spawn_enemies():
 	while true:
@@ -41,3 +60,9 @@ func spawn_enemies():
 		self.add_child(e)
 		e.position = pos
 		await get_tree().create_timer(0.1).timeout
+		
+func spawn_planet(pos, dir, sp):
+	var new_planet = planet_scene.instantiate()
+	new_planet.init(pos, dir, sp)
+	new_planet.clicked.connect(clicked_planet)
+	self.add_child(new_planet)

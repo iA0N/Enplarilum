@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7upenbt5qpgb"]
+[gd_scene load_steps=8 format=3 uid="uid://c7upenbt5qpgb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jw1mx"]
-[ext_resource type="Material" uid="uid://byrjx48bmuyts" path="res://sun_mat.tres" id="1_qvrxr"]
-[ext_resource type="PackedScene" uid="uid://btfw7b8c688rt" path="res://scenes/planet.tscn" id="3_gft8h"]
+[ext_resource type="PackedScene" uid="uid://jrl2udwt3am6" path="res://scenes/sun.tscn" id="2_88xvm"]
+[ext_resource type="PackedScene" uid="uid://dlup1jopoqpgf" path="res://scenes/ui.tscn" id="4_plbic"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bh2l6"]
 
@@ -19,23 +19,13 @@ sky_custom_fov = 140.0
 ambient_light_source = 2
 ambient_light_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_hpd78"]
-material = ExtResource("1_qvrxr")
-radius = 10.0
-height = 20.0
-
 [node name="main" type="Node3D"]
 script = ExtResource("1_jw1mx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_22qy2")
 
-[node name="sun" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_hpd78")
-
-[node name="p1" parent="." instance=ExtResource("3_gft8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.192, 0, 0.206848)
-direction = Vector3(0, 0, 10)
+[node name="sun" parent="." instance=ExtResource("2_88xvm")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 1, 0.141176, 1)
@@ -48,3 +38,10 @@ sky_mode = 2
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 120, 0)
 far = 10000.0
+
+[node name="UI" parent="." instance=ExtResource("4_plbic")]
+
+[node name="user_input" parent="UI" index="0"]
+text = "user_input"
+
+[editable path="UI"]

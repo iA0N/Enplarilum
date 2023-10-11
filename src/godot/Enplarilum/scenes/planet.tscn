@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://btfw7b8c688rt"]
+[gd_scene load_steps=7 format=3 uid="uid://btfw7b8c688rt"]
 
 [ext_resource type="Script" path="res://scenes/planet.gd" id="1_u6rp7"]
+[ext_resource type="PackedScene" uid="uid://bnbys7r34c23u" path="res://assets/planets/icytime.glb" id="2_djx8c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kpout"]
 size = Vector3(7.73219, 7.30524, 7.29469)
@@ -30,5 +31,7 @@ lifetime = 20.0
 visibility_aabb = AABB(-8.10665, -4, -8.00824, 16.2133, 8, 16.0165)
 process_material = SubResource("ParticleProcessMaterial_na6fj")
 draw_pass_1 = SubResource("PointMesh_0v75e")
+
+[node name="icytime" parent="." instance=ExtResource("2_djx8c")]
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
