@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InputManager="*res://GDTIM-4.x-v2_1_2/InputManager.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"

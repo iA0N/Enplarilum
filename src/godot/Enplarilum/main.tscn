@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7upenbt5qpgb"]
+[gd_scene load_steps=9 format=3 uid="uid://c7upenbt5qpgb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jw1mx"]
 [ext_resource type="Material" uid="uid://byrjx48bmuyts" path="res://sun_mat.tres" id="1_qvrxr"]
-[ext_resource type="PackedScene" uid="uid://btfw7b8c688rt" path="res://planet.tscn" id="3_gft8h"]
+[ext_resource type="PackedScene" uid="uid://btfw7b8c688rt" path="res://scenes/planet.tscn" id="3_gft8h"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bh2l6"]
 
@@ -24,14 +24,6 @@ material = ExtResource("1_qvrxr")
 radius = 10.0
 height = 20.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0o8o"]
-albedo_color = Color(0, 0.745098, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_4l70b"]
-material = SubResource("StandardMaterial3D_t0o8o")
-radius = 3.0
-height = 6.0
-
 [node name="main" type="Node3D"]
 script = ExtResource("1_jw1mx")
 
@@ -43,7 +35,6 @@ mesh = SubResource("SphereMesh_hpd78")
 
 [node name="p1" parent="." instance=ExtResource("3_gft8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.192, 0, 0.206848)
-mesh = SubResource("SphereMesh_4l70b")
 direction = Vector3(0, 0, 10)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

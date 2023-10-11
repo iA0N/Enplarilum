@@ -28,6 +28,10 @@ func _input(event):
 	if event.is_action_released("ui_cancel"):
 		tracked_planet["tracking"] = false
 		$Camera3D.position = default_cam_position
+		
+	if event is InputEventScreenPinch:
+		$Camera3D.position.y -= sign(event.relative)
+		
 
 func spawn_enemies():
 	while true:
