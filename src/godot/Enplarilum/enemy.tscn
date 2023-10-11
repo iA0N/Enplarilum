@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxvdkgdhdc4s1"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_jrqw7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro7nl"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_84t4h"]
+material = SubResource("StandardMaterial3D_ro7nl")
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_jrqw7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_84t4h")
