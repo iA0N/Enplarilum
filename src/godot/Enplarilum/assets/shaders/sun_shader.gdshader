@@ -15,5 +15,5 @@ void vertex() {
   VERTEX.y += texture(noise, VERTEX.xz / 23.0 + 0.01 * TIME).y;
 }
 void fragment() {
-	//EMISSION = vec3(10,10,10);
+	EMISSION = vec3(10,10,10);
 }
