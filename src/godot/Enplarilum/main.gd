@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var sunPosition = $sun.position
+@onready var sunPosition = Vector3(0, 0, 0)
 var tracked_planet = {"tracking": false, "planet": null}
 var default_cam_position = Vector3(0, 112, 0)
 var planets = []
@@ -11,8 +11,11 @@ var planet_scene = load("res://scenes/planet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn_planet(Vector3(-100, 0, 0), Vector3(0, 0, 80), 0.25)
+	#spawn_planet(Vector3(-100, 0, 0), Vector3(0, 0, 80), 0.25)
+	#spawn_planet(Vector3(-120, 0, 0), Vector3(0, 0, 80), 0.5)
+	#spawn_planet(Vector3(-80, 0, 0), Vector3(0, 0, 80), 1)
 	spawn_enemies()
+	$Control.main = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,6 +53,31 @@ func _input(event):
 		event is InputEventScreenCancel):
 			$UI/user_input.text = event.as_string()
 			print(event.as_string())
+			
+	if event is InputEventMultiScreenDrag:
+		$UI/user_input.text = "Multiple finger drag"
+	elif event is InputEventMultiScreenSwipe:
+		$UI/user_input.text = "Multiple finger swipe"
+	elif event is InputEventMultiScreenTap:
+		$UI/user_input.text = "Multiple finger tap"
+	elif event is InputEventMultiScreenLongPress:
+		$UI/user_input.text = "Multiple finger long press"
+	elif event is InputEventSingleScreenDrag:
+		$UI/user_input.text = "Single finger drag"
+	elif event is InputEventSingleScreenSwipe:
+		$UI/user_input.text = "Single finger swipe"
+	elif event is InputEventScreenPinch:
+		$UI/user_input.text = "Pinch"
+	elif event is InputEventScreenTwist:
+		$UI/user_input.text = "Twist"
+	elif event is InputEventSingleScreenLongPress:
+		$UI/user_input.text = "Single finger long press"
+	elif event is InputEventSingleScreenTap:
+		$UI/user_input.text = "Single finger tap"
+	elif event is InputEventSingleScreenTouch:
+		$UI/user_input.text = "Single finger touch"
+	elif event is InputEventScreenCancel:
+		$UI/user_input.text = "Cancel"
 
 
 func spawn_enemies():
@@ -66,3 +94,4 @@ func spawn_planet(pos, dir, sp):
 	new_planet.init(pos, dir, sp)
 	new_planet.clicked.connect(clicked_planet)
 	self.add_child(new_planet)
+	

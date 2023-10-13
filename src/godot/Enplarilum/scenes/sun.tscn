@@ -1,19 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnksiqtirsb33"]
+[gd_scene load_steps=4 format=3 uid="uid://jrl2udwt3am6"]
 
 [ext_resource type="Script" path="res://scenes/sun.gd" id="1_g0wix"]
-[ext_resource type="Shader" path="res://assets/shaders/sun_shader.gdshader" id="2_qecbm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_drhmh"]
-render_priority = 0
-shader = ExtResource("2_qecbm")
-shader_parameter/height_scale = 0.9
+[ext_resource type="Material" uid="uid://byrjx48bmuyts" path="res://sun_mat.tres" id="1_occch"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hpd78"]
-material = SubResource("ShaderMaterial_drhmh")
+material = ExtResource("1_occch")
 radius = 10.0
 height = 20.0
 
-[node name="main" type="Node3D"]
+[node name="main2" type="Node3D"]
 script = ExtResource("1_g0wix")
 
 [node name="sun" type="MeshInstance3D" parent="."]
