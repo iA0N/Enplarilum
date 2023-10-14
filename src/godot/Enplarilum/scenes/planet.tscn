@@ -26,6 +26,7 @@ script = ExtResource("1_u6rp7")
 shape = SubResource("BoxShape3D_kpout")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 1024
 lifetime = 20.0
 visibility_aabb = AABB(-8.10665, -4, -8.00824, 16.2133, 8, 16.0165)
@@ -33,5 +34,6 @@ process_material = SubResource("ParticleProcessMaterial_na6fj")
 draw_pass_1 = SubResource("PointMesh_0v75e")
 
 [node name="icytime" parent="." instance=ExtResource("2_djx8c")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

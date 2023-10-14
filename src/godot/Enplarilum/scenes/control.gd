@@ -1,8 +1,8 @@
 extends Control
 
 var main
-var drag_speed_modifier = 0.2
-var drag_direction = -1
+var drag_speed_modifier = 1
+var drag_direction = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +27,13 @@ func _input(event):
 		event is InputEventSingleScreenTouch or
 		event is InputEventSingleScreenSwipe or
 		event is InputEventScreenCancel):
-			pass
+			pass#print(event.as_string())
 			
 	if event is InputEventSingleScreenDrag:
-		main.get_node("Camera3D").position.x += event.relative.x * drag_direction * drag_speed_modifier
-		main.get_node("Camera3D").position.z += event.relative.y * drag_direction * drag_speed_modifier
+		main.get_node("player").direction.x += event.relative.x
+		main.get_node("player").direction.z += event.relative.y
+		main.get_node("player").direction = main.get_node("player").direction.limit_length(300)
+		print(main.get_node("player").direction)
+		#main.get_node("player").direction = main.get_node("player").direction.normalized()
+		var a = main.get_node("player").direction
+		main.get_node("player").look_at(main.get_node("player").position + (a * -1))

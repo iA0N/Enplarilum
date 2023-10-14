@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy3ofcf4cy7cn"]
+
+[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_hlutu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly1nv"]
+emission_enabled = true
+emission = Color(0, 0, 0.709804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wcdm"]
+material = SubResource("StandardMaterial3D_ly1nv")
+size = Vector3(0.2, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrt2e"]
+size = Vector3(0.445531, 0.469572, 2.01496)
+
+[node name="projectile" type="Node3D"]
+script = ExtResource("1_hlutu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4wcdm")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_lrt2e")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

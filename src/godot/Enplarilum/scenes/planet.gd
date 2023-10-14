@@ -14,7 +14,8 @@ func init(pos, dir, sp):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	self.rotate_y(deg_to_rad(1) * delta)
+	self.rotate_y(deg_to_rad(10) * delta)
+	self.rotate_x(deg_to_rad(10) * delta)
 	var toSun = (sunPosition - self.position)
 	var lenToSun = toSun.length()
 	self.direction += toSun * delta

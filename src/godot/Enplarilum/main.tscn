@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7upenbt5qpgb"]
+[gd_scene load_steps=10 format=3 uid="uid://c7upenbt5qpgb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jw1mx"]
 [ext_resource type="PackedScene" uid="uid://davsrsvmevgb1" path="res://test/player.tscn" id="3_mpxnb"]
 [ext_resource type="PackedScene" uid="uid://dlup1jopoqpgf" path="res://scenes/ui.tscn" id="4_plbic"]
 [ext_resource type="PackedScene" uid="uid://f0o4njb7ohwp" path="res://scenes/control.tscn" id="4_u0irm"]
+[ext_resource type="PackedScene" uid="uid://btfw7b8c688rt" path="res://scenes/planet.tscn" id="5_3oind"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bh2l6"]
 
@@ -45,7 +46,10 @@ far = 10000.0
 text = "user_input"
 
 [node name="player" parent="." instance=ExtResource("3_mpxnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.6339)
 
 [node name="Control" parent="." instance=ExtResource("4_u0irm")]
+
+[node name="planet" parent="." instance=ExtResource("5_3oind")]
 
 [editable path="UI"]

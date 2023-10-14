@@ -1,10 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://davsrsvmevgb1"]
+[gd_scene load_steps=7 format=3 uid="uid://davsrsvmevgb1"]
 
 [ext_resource type="PackedScene" uid="uid://ddcl6us75hh8u" path="res://assets/depressionen/scene.gltf" id="1_6c3ev"]
 [ext_resource type="Script" path="res://test/player.gd" id="1_m2b7e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajk4x"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fh8qq"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 4)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 0, -8)
+gravity = Vector3(0, 0, -8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0uta"]
+albedo_color = Color(0.996078, 0.67451, 0, 1)
+emission_enabled = true
+emission = Color(0.996078, 0.603922, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3rxw"]
+material = SubResource("StandardMaterial3D_l0uta")
+size = Vector3(0.4, 0.4, 0.4)
 
 [node name="player" type="Node3D"]
 script = ExtResource("1_m2b7e")
 
 [node name="ship" parent="." instance=ExtResource("1_6c3ev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0313638, 0, 0.0801861)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.4218)
+mesh = SubResource("BoxMesh_ajk4x")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_fh8qq")
+draw_pass_1 = SubResource("BoxMesh_g3rxw")

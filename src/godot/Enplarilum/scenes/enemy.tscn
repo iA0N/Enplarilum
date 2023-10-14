@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxvdkgdhdc4s1"]
+[gd_scene load_steps=5 format=3 uid="uid://dxvdkgdhdc4s1"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_jrqw7"]
 
@@ -9,10 +9,22 @@ emission = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_84t4h"]
 material = SubResource("StandardMaterial3D_ro7nl")
-size = Vector3(0.4, 0.4, 0.4)
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hymce"]
+size = Vector3(4.5528, 4.57549, 4.95647)
 
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_jrqw7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_84t4h")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_hymce")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
