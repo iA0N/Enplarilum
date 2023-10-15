@@ -29,3 +29,5 @@ func _process(delta):
 func _on_area_3d_area_entered(area):
 	self.hide()
 	self.queue_free()
+	get_parent().score += 1
+	get_parent().get_node("UI/user_input").text = "score: " + str(get_parent().score)

@@ -4,7 +4,7 @@ extends Node3D
 var tracked_planet = {"tracking": false, "planet": null}
 var default_cam_position = Vector3(0, 112, 0)
 var planets = []
-
+var score = 0
 # load scenes
 var enemy_scene = load("res://scenes/enemy.tscn")
 var planet_scene = load("res://scenes/planet.tscn")
@@ -17,6 +17,7 @@ func _ready():
 	spawn_enemies()
 	$Control.main = self
 	$player.main = self
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,6 +32,8 @@ func _process(delta):
 func clicked_planet(planet):
 	tracked_planet["planet"] = planet
 	tracked_planet["tracking"] = true
+
+
 
 func _input(event):
 	if event.is_action_released("ui_cancel"):
@@ -61,7 +64,7 @@ func spawn_enemies():
 		var e = enemy_scene.instantiate()
 		self.add_child(e)
 		e.position = pos
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0).timeout
 		
 func spawn_planet(pos, dir, sp):
 	var new_planet = planet_scene.instantiate()

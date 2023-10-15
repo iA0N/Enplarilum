@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed = 0.1
+@export var speed = 0.56
 var direction = Vector3(0,0,0)
 var projectile_scene = preload("res://scenes/projectile.tscn")
 @onready var main
@@ -13,7 +13,7 @@ func _physics_process(delta):
 
 func fire():
 	while true:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0).timeout
 		var p = spawn_projectile()
 	
 func spawn_projectile():

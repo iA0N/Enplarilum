@@ -15,6 +15,6 @@ script = ExtResource("1_vvf0s")
 [node name="points_label" type="Label" parent="."]
 layout_mode = 0
 offset_top = 40.0
-offset_right = 143.0
+offset_right = 136.08
 offset_bottom = 86.0
-text = "Punkte"
+text = "Score"
